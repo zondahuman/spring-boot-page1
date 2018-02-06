@@ -30,7 +30,7 @@ logging:
         level:
               com.ibatis:DEBUG
 
-
+debug: true
 
 
 
