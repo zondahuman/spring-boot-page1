@@ -30,6 +30,8 @@ public interface UserService {
 
     List<User> findByPaging(Integer pageNum, Integer pageSize, Integer age, String userName);
 
+    List<User> findByExamplePaging(Integer pageNum, Integer pageSize, Integer age, String userName);
+
 
 
 

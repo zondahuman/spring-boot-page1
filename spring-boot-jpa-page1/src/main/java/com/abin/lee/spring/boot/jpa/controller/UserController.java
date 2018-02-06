@@ -106,6 +106,15 @@ public class UserController {
         return users;
     }
 
+    @RequestMapping("/findByExamplePaging")
+    @ResponseBody
+    public List<User> findByExamplePaging(Integer pageNum, Integer pageSize, Integer age, String userName) {
+        List<User> users = userService.findByExamplePaging(pageNum, pageSize, age, userName);
+        return users;
+    }
+
+
+
 
 
 

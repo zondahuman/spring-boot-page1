@@ -14,10 +14,7 @@ import com.abin.lee.spring.boot.jpa.util.PageUtil;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -119,6 +116,33 @@ public class UserServiceImpl implements UserService {
         userList = userPage.getContent();
         return userList;
     }
+
+
+    public List<User> findByExamplePaging(Integer pageNum, Integer pageSize, Integer age, String userName) {
+        List<User> userList = null;
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
+        Pageable pageable = new PageRequest(pageNum, pageSize, sort);
+
+        //创建查询条件数据对象
+        User user = new User();
+        user.setAge(age);
+        user.setUserName(userName);
+
+        //创建匹配器，即如何使用查询条件
+        ExampleMatcher matcher = ExampleMatcher.matching() //构建对象
+                .withMatcher("userName", ExampleMatcher.GenericPropertyMatchers.exact())  //姓名采用“完全匹配，大小写敏感”的方式查询
+                .withIgnorePaths("password")  //忽略属性：用户密码。因为是基本类型，需要忽略掉
+                .withIgnorePaths("id");  //忽略属性：用户id。因为是基本类型，需要忽略掉
+
+        Example<User> example = Example.of(user, matcher);
+
+        Page<User> userPage = this.userRepository.findAll(example, pageable);
+        userList = userPage.getContent();
+        return userList;
+    }
+
+
+
 
 
 }
