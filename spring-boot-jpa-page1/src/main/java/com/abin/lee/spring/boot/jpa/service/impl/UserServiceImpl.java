@@ -117,7 +117,14 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
-
+    /**
+     * https://www.cnblogs.com/rulian/p/6533109.html
+     * @param pageNum
+     * @param pageSize
+     * @param age
+     * @param userName
+     * @return
+     */
     public List<User> findByExamplePaging(Integer pageNum, Integer pageSize, Integer age, String userName) {
         List<User> userList = null;
         Sort sort = new Sort(Sort.Direction.DESC, "id");
