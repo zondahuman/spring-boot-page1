@@ -26,7 +26,7 @@ public class JpaPageAddTest {
     private static final String httpURL = "http://localhost:8099/user/add1";
 
     @Test
-    public void testAnnotationAdd() {
+    public void testJpaPageAdd() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();

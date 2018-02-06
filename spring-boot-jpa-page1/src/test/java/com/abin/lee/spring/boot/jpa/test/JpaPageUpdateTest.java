@@ -26,7 +26,7 @@ public class JpaPageUpdateTest {
     private static final String httpURL = "http://localhost:8099/cassandra/update";
 
     @Test
-    public void testAnnotationAdd() {
+    public void testJpaPageUpdate() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();

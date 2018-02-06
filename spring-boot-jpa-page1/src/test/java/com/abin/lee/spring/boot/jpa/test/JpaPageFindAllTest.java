@@ -24,7 +24,7 @@ public class JpaPageFindAllTest {
     private static final String httpURL = "http://localhost:8099/user/findAll";
 
     @Test
-    public void testAnnotationAdd() {
+    public void testJpaPageFindAll() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();

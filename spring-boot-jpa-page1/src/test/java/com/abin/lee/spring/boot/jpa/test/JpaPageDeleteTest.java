@@ -24,7 +24,7 @@ public class JpaPageDeleteTest {
     private static final String httpURL = "http://localhost:8099/cassandra/delete";
 
     @Test
-    public void testAnnotationAdd() {
+    public void testJpaPageDelete() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();

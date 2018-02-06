@@ -24,7 +24,7 @@ public class JpaPageFindByIdTest {
     private static final String httpURL = "http://localhost:8099/user/findById";
 
     @Test
-    public void testAnnotationAdd() {
+    public void testJpaPageFindById() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();

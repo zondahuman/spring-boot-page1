@@ -24,7 +24,7 @@ public class JpaPageFindByPagingTest {
     private static final String httpURL = "http://localhost:8099/user/findByPaging";
 
     @Test
-    public void testAnnotationAdd() {
+    public void testJpaPageFindByPaging() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
