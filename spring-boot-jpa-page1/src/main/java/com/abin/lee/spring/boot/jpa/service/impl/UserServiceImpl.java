@@ -74,7 +74,7 @@ public class UserServiceImpl implements UserService {
 
     public List<User> findByPage(Integer pageNum, Integer pageSize, Integer age, String userName) {
         List<User> userList = null;
-        Sort sort = new Sort(Sort.Direction.DESC, "age");
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(pageNum, pageSize, sort);
         Page<User> userPage = this.userRepository.findAll(new Specification<User>() {
             @Override
@@ -82,7 +82,7 @@ public class UserServiceImpl implements UserService {
                 Path<String> userNamePath = root.get("userName");
                 Path<Integer> agePath = root.get("age");
                 List<Predicate> predicateList = Lists.newArrayList();
-                if (Strings.isNullOrEmpty(userName)) {
+                if (!Strings.isNullOrEmpty(userName)) {
                     predicateList.add(criteriaBuilder.equal(userNamePath.as(String.class), userName));
                 }
                 if (null != age && age > 0) {
@@ -97,7 +97,7 @@ public class UserServiceImpl implements UserService {
 
     public List<User> findByPaging(Integer pageNum, Integer pageSize, Integer age, String userName) {
         List<User> userList = null;
-        Sort sort = new Sort(Sort.Direction.DESC, "age");
+        Sort sort = new Sort(Sort.Direction.DESC, "id");
         Pageable pageable = new PageRequest(pageNum, pageSize, sort);
         Page<User> userPage = this.userRepository.findAll(new Specification<User>() {
             @Override
@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
                 Path<String> userNamePath = root.get("userName");
                 Path<Integer> agePath = root.get("age");
                 List<Predicate> predicateList = Lists.newArrayList();
-                if (Strings.isNullOrEmpty(userName)) {
+                if (!Strings.isNullOrEmpty(userName)) {
                     predicateList.add(criteriaBuilder.equal(userNamePath.as(String.class), userName));
 //                    predicateList.add(criteriaBuilder.like(userNamePath.as(String.class), "%"+userName+"%"));
                 }

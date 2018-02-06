@@ -30,8 +30,8 @@ public class JpaPageFindByPageTest {
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
             nvps.add(new BasicNameValuePair("pageNum", "1"));
             nvps.add(new BasicNameValuePair("pageSize", "5"));
-            nvps.add(new BasicNameValuePair("pageSize", "5"));
-            nvps.add(new BasicNameValuePair("pageSize", "5"));
+            nvps.add(new BasicNameValuePair("age", "7"));
+            nvps.add(new BasicNameValuePair("userName", "abin1"));
             HttpPost httpPost = new HttpPost(httpURL);
 //            httpPost.setHeader("Cookie", getCookie());
 //            httpPost.setHeader("Cookie", "JSESSIONID=7588C522A6900BFD581AA18FDA64D347");
