@@ -92,6 +92,17 @@ public class UserServiceImpl implements UserService {
         return userList;
     }
 
+
+    /**
+     * http://lib.csdn.net/article/javaee/2667
+     * https://www.cnblogs.com/derry9005/p/6282571.html
+     * http://blog.csdn.net/wazz753/article/details/72721958
+     * @param pageNum
+     * @param pageSize
+     * @param age
+     * @param userName
+     * @return
+     */
     public List<User> findByPaging(Integer pageNum, Integer pageSize, Integer age, String userName) {
         List<User> userList = null;
         Sort sort = new Sort(Sort.Direction.DESC, "id");
