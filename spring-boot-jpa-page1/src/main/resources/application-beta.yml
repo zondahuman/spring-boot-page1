@@ -28,9 +28,14 @@ spring:
 # LOGGING
 logging:
         level:
-              com.ibatis:DEBUG
-
-
+              root: DEBUG
+              org:
+                  springframework:
+                                    web: DEBUG
+                  hibernate: DEBUG
+#        path: F:\\
+#        file: log.log
+debug: true
 
 
 
