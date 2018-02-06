@@ -4,19 +4,24 @@ package com.abin.lee.spring.boot.jpa.service.impl;
  * Created by abin on 2018/1/15 19:48.
  * spring-boot-start2
  * com.abin.lee.spring.boot.jpa.service.impl
+ * http://lib.csdn.net/article/javaee/2667
  */
+
 import com.abin.lee.spring.boot.jpa.model.User;
 import com.abin.lee.spring.boot.jpa.repository.UserRepository;
 import com.abin.lee.spring.boot.jpa.service.UserService;
 import com.abin.lee.spring.boot.jpa.util.PageUtil;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 @Service
@@ -66,6 +71,54 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByAge(age, PageUtil.pageSortAge(pageNum, pageSize, age));
     }
 
+
+    public List<User> findByPage(Integer pageNum, Integer pageSize, Integer age, String userName) {
+        List<User> userList = null;
+        Sort sort = new Sort(Sort.Direction.DESC, "age");
+        Pageable pageable = new PageRequest(pageNum, pageSize, sort);
+        Page<User> userPage = this.userRepository.findAll(new Specification<User>() {
+            @Override
+            public Predicate toPredicate(Root<User> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Path<String> userNamePath = root.get("userName");
+                Path<Integer> agePath = root.get("age");
+                List<Predicate> predicateList = Lists.newArrayList();
+                if (Strings.isNullOrEmpty(userName)) {
+                    predicateList.add(criteriaBuilder.equal(userNamePath.as(String.class), userName));
+                }
+                if (null != age && age > 0) {
+                    predicateList.add(criteriaBuilder.equal(agePath.as(Integer.class), age));
+                }
+                return criteriaBuilder.and(predicateList.toArray(new Predicate[predicateList.size()]));
+            }
+        }, pageable);
+        userList = userPage.getContent();
+        return userList;
+    }
+
+    public List<User> findByPaging(Integer pageNum, Integer pageSize, Integer age, String userName) {
+        List<User> userList = null;
+        Sort sort = new Sort(Sort.Direction.DESC, "age");
+        Pageable pageable = new PageRequest(pageNum, pageSize, sort);
+        Page<User> userPage = this.userRepository.findAll(new Specification<User>() {
+            @Override
+            public Predicate toPredicate(Root<User> root, CriteriaQuery<?> criteriaQuery, CriteriaBuilder criteriaBuilder) {
+                Path<String> userNamePath = root.get("userName");
+                Path<Integer> agePath = root.get("age");
+                List<Predicate> predicateList = Lists.newArrayList();
+                if (Strings.isNullOrEmpty(userName)) {
+                    predicateList.add(criteriaBuilder.equal(userNamePath.as(String.class), userName));
+//                    predicateList.add(criteriaBuilder.like(userNamePath.as(String.class), "%"+userName+"%"));
+                }
+                if (null != age && age > 0) {
+                    predicateList.add(criteriaBuilder.equal(agePath.as(Integer.class), age));
+                }
+                criteriaQuery.where(predicateList.toArray(new Predicate[predicateList.size()]));
+                return null;
+            }
+        }, pageable);
+        userList = userPage.getContent();
+        return userList;
+    }
 
 
 }

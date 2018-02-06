@@ -19,19 +19,19 @@ import java.util.List;
  * spring-boot-start2
  * com.abin.lee.spring.boot.mybatis.test
  */
-public class CassandraDeleteTest {
+public class JpaPageFindByPageTest {
 
-    private static final String httpURL = "http://localhost:8099/cassandra/delete";
+    private static final String httpURL = "http://localhost:8099/user/findByPage";
 
     @Test
     public void testAnnotationAdd() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-            String id = "e18ed0c1-ea72-42ae-a7f4-da0f2504f12f";
-            nvps.add(new BasicNameValuePair("id", id));
-//            String randomString = new RandomStringGenerator.Builder().build().generate(10);
-//            nvps.add(new BasicNameValuePair("question", randomString));
+            nvps.add(new BasicNameValuePair("pageNum", "1"));
+            nvps.add(new BasicNameValuePair("pageSize", "5"));
+            nvps.add(new BasicNameValuePair("pageSize", "5"));
+            nvps.add(new BasicNameValuePair("pageSize", "5"));
             HttpPost httpPost = new HttpPost(httpURL);
 //            httpPost.setHeader("Cookie", getCookie());
 //            httpPost.setHeader("Cookie", "JSESSIONID=7588C522A6900BFD581AA18FDA64D347");

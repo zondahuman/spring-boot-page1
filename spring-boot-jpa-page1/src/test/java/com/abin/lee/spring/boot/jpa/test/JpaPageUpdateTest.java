@@ -21,7 +21,7 @@ import java.util.List;
  * spring-boot-start2
  * com.abin.lee.spring.boot.mybatis.test
  */
-public class CassandraUpdateTest {
+public class JpaPageUpdateTest {
 
     private static final String httpURL = "http://localhost:8099/cassandra/update";
 

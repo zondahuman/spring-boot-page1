@@ -92,6 +92,20 @@ public class UserController {
         return users;
     }
 
+    @RequestMapping("/findByPage")
+    @ResponseBody
+    public List<User> findByPage(Integer pageNum, Integer pageSize, Integer age, String userName) {
+        List<User> users = userService.findByPage(pageNum, pageSize, age, userName);
+        return users;
+    }
+
+    @RequestMapping("/findByPaging")
+    @ResponseBody
+    public List<User> findByPaging(Integer pageNum, Integer pageSize, Integer age, String userName) {
+        List<User> users = userService.findByPaging(pageNum, pageSize, age, userName);
+        return users;
+    }
+
 
 
 

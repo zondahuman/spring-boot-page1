@@ -19,7 +19,7 @@ import java.util.List;
  * spring-boot-start2
  * com.abin.lee.spring.boot.mybatis.test
  */
-public class CassandraFindByIdTest {
+public class JpaPageFindByIdTest {
 
     private static final String httpURL = "http://localhost:8099/user/findById";
 
