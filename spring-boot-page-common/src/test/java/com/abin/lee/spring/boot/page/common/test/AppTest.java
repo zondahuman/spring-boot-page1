@@ -8,5 +8,5 @@ package com.abin.lee.spring.boot.page.common.test;
 public class AppTest {
 
 
-    
+
 }
