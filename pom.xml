@@ -27,6 +27,10 @@
         <jsckson.version>2.9.4</jsckson.version>
         <!--<spring.boot.version>2.0.0.M7</spring.boot.version>-->
         <spring.boot.version>1.5.10.RELEASE</spring.boot.version>
+        <!-- maven方式跳过maven test, 等同$ mvn package -Dmaven.test.skip=true -->
+        <!-- <maven.test.skip>true</maven.test.skip> -->
+        <!-- surefire plugin方式跳过maven test， 等同$ mvn package -DskipTests -->
+        <skipTests>true</skipTests>
     </properties>
 
 
