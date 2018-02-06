@@ -13,13 +13,13 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
 
 
 @SpringBootApplication
-public class JpaThymeleafApplication extends SpringBootServletInitializer {
+public class JpaPageApplication extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(JpaThymeleafApplication.class);
+        return application.sources(JpaPageApplication.class);
     }
 
     public static void main(String[] args) throws Exception {
-        SpringApplication.run(JpaThymeleafApplication.class, args);
+        SpringApplication.run(JpaPageApplication.class, args);
     }
 }

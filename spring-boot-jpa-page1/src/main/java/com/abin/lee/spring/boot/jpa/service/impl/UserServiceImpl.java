@@ -62,8 +62,8 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<User> findByAge(Integer age) {
-        return userRepository.findByAge(age, PageUtil.pageSortIdAndAge());
+    public List<User> findByAge(Integer pageNum, Integer pageSize, Integer age) {
+        return userRepository.findByAge(age, PageUtil.pageSortAge(pageNum, pageSize, age));
     }
 
 

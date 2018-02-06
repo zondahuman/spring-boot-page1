@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class CassandraFindByIdTest {
 
-    private static final String httpURL = "http://localhost:8099/cassandra/findById";
+    private static final String httpURL = "http://localhost:8099/user/findById";
 
     @Test
     public void testAnnotationAdd() {

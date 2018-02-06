@@ -10,6 +10,7 @@ import com.abin.lee.spring.boot.jpa.model.User;
 import com.abin.lee.spring.boot.jpa.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -68,6 +69,15 @@ public class UserController {
     }
 
 
+
+
+    @RequestMapping("/add1")
+    @ResponseBody
+    public String add1(@ModelAttribute User user) {
+        userService.save(user);
+        return "SUCCESS";
+    }
+
     @RequestMapping("/findAll")
     @ResponseBody
     public List<User> findAll(Integer pageNum, Integer pageSize) {
@@ -78,7 +88,7 @@ public class UserController {
     @RequestMapping("/findByAge")
     @ResponseBody
     public List<User> findByAge(Integer pageNum, Integer pageSize, Integer age) {
-        List<User> users = userService.findByAge(age);
+        List<User> users = userService.findByAge(pageNum, pageSize, age);
         return users;
     }
 

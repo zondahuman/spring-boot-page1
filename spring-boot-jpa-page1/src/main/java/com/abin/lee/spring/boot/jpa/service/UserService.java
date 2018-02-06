@@ -24,6 +24,6 @@ public interface UserService {
 
     List<User> findAll(Integer pageNum, Integer pageSize);
 
-    List<User> findByAge(Integer age);
+    List<User> findByAge(Integer pageNum, Integer pageSize, Integer age);
 
 }

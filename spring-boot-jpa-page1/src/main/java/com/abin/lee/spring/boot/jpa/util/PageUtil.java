@@ -20,6 +20,14 @@ public class PageUtil {
         return new PageRequest(1, 10, Sort.Direction.ASC, "id");
     }
 
+    public static Pageable pageSortAge() {
+        return new PageRequest(1, 10, Sort.Direction.DESC, "age");
+    }
+
+    public static Pageable pageSortAge(Integer pageNum, Integer pageSize, Integer age) {
+        return new PageRequest(pageNum, pageSize, Sort.Direction.DESC, "age");
+    }
+
     public static Pageable pageSortIdAndAge() {
         return new PageRequest(1, 10, Sort.Direction.ASC, "id", "age");
     }

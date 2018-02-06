@@ -23,17 +23,20 @@ import java.util.UUID;
  */
 public class JpaPageAddTest {
 
-    private static final String httpURL = "http://localhost:8099/cassandra/insert";
+    private static final String httpURL = "http://localhost:8099/user/add1";
 
     @Test
     public void testAnnotationAdd() {
         try {
             CloseableHttpClient httpClient = HttpClientUtil.getHttpClient();
             List<NameValuePair> nvps = new ArrayList<NameValuePair>();
-            nvps.add(new BasicNameValuePair("id", UUID.randomUUID().toString()));
+            String userName = "abin"+(int)(Math.random()*10);
+            nvps.add(new BasicNameValuePair("userName", userName));
 //            String randomString = new RandomStringGenerator.Builder().build().generate(10);
 //            nvps.add(new BasicNameValuePair("question", randomString));
-            nvps.add(new BasicNameValuePair("question", RandomStringUtils.randomAlphabetic(5)));
+            nvps.add(new BasicNameValuePair("password", RandomStringUtils.randomAlphabetic(5)));
+            String age = (int)(Math.random()*100) + "";
+            nvps.add(new BasicNameValuePair("age", age));
             HttpPost httpPost = new HttpPost(httpURL);
 
             httpPost.setEntity(new UrlEncodedFormEntity(nvps, Consts.UTF_8));
