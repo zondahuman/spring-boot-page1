@@ -35,6 +35,8 @@ logging:
                   hibernate: DEBUG
 #        path: F:\\
 #        file: log.log
+              com:
+                  ibatis: DEBUG
 debug: true
 
 
